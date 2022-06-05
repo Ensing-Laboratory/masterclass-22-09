@@ -1,0 +1,22 @@
+# set terminal gif animate
+# set output 'anim_cvs.gif'
+
+set view map
+set pm3d
+set palette rgb 34,35,36
+
+set xrange [-1.5:1.5]
+set yrange [-0.5:2.5]
+set xlabel "cv.x"
+set ylabel "cv.y"
+
+r=5
+
+do for [k=0:1000:10] {
+set title sprintf("t=%.0f ps",k*500*.001)
+splot '../potential.dat' w pm3d t '',\
+ 'colvar.out' every ::(k*r-5)::(k*r) u 2:3:($0*0) w p pt 7 lc 2 t 'sampled config.',\
+ 'path.out' index 0 every ::1::1000 u 2:3:($0*0) w l lw 2 lc 1 t 'path',\
+ 'path.out' index 0 every 19::21::40 u 2:3:($0*0) w p pt 2 ps 3 lw 3 lc 3 t 'stable states',\
+}
+ 

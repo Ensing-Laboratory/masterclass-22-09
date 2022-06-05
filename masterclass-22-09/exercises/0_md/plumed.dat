@@ -1,0 +1,14 @@
+UNITS LENGTH=nm TIME=fs
+
+cv: DISTANCE ATOMS=1,2 COMPONENTS
+
+lwall: LOWER_WALLS ARG=cv.x,cv.y AT=-1.5,-0.5 KAPPA=1000.0,1000.0
+uwall: UPPER_WALLS ARG=cv.x,cv.y AT=1.5,2.5 KAPPA=1000.0,1000.0
+
+PRINT ARG=cv.x,cv.y STRIDE=100 FILE=colvar.out
+
+
+
+
+
+

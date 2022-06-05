@@ -1,0 +1,12 @@
+# set terminal gif animate
+# set output 'anim_fes.gif'
+
+set grid
+set xlabel "pcv.s"
+set ylabel "kJ/mol"
+set yrange[-250:0]
+
+do for [k=0:100:1] {
+set title sprintf("t=%.0f ps",k*500*.01)
+plot 'fes_'.k.'.dat' u 1:($2) w l t''
+}
