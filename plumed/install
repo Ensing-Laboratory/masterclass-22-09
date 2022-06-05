@@ -1,0 +1,13 @@
+rm -r bin/ include/ lib/ plumed-2.3.0
+tar xvf plumed-2.3.0.tgz 
+cp MetaD.cpp plumed-2.3.0/src/bias/
+cp LatticeReduction.cpp plumed-2.3.0/src/tools/
+cp PathCV.cpp plumed-2.3.0/src/function/
+cp PES.cpp plumed-2.3.0/src/cltools/
+root=$(pwd)
+cd plumed-2.3.0
+./configure --prefix="$root"
+make -j 4
+make install
+make doc
+source sourceme.sh
