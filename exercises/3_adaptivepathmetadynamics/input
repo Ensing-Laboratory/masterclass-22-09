@@ -1,0 +1,9 @@
+nstep 500000
+temperature 0.5
+friction 0.1
+tstep 0.001
+pesfile ../potential.dat
+posx_init 0.6
+posy_init 0.0 
+idum 0
+wrapatoms false

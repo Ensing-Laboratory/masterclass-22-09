@@ -1,0 +1,16 @@
+# set terminal png
+# set output 'plot_cvs.png'
+
+set view map
+set pm3d
+set palette rgb 34,35,36
+
+set xrange [-1.5:1.5]
+set yrange [-0.5:2.5]
+set xlabel "cv.x"
+set ylabel "cv.y"
+
+splot '../potential.dat' w pm3d t '',\
+ 'colvar.out' u 2:3:($0*0) w p pt 7 ps 0.5 lc 2 t 'sampled config.'
+
+ 

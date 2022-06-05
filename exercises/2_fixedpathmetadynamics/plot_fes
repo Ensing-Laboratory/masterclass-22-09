@@ -1,0 +1,17 @@
+# set terminal png
+# set output 'plot_fes.png'
+
+set grid
+set xlabel "pcv.s"
+set ylabel "kJ/mol"
+
+plot 'fes_10.dat' u 1:($2) w l t''
+rep 'fes_20.dat' u 1:($2) w l t''
+rep 'fes_30.dat' u 1:($2) w l t''
+rep 'fes_50.dat' u 1:($2) w l t''
+rep 'fes_60.dat' u 1:($2) w l t''
+rep 'fes_70.dat' u 1:($2) w l t''
+rep 'fes_80.dat' u 1:($2) w l t''
+rep 'fes_90.dat' u 1:($2) w l t''
+rep 'fes_100.dat' u 1:($2) w l t''
+

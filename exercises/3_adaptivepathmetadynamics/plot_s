@@ -1,0 +1,8 @@
+# set terminal png
+# set output 'plot_s.png'
+
+set xlabel 't (ps)'
+set ylabel 'pcv.s'
+set grid
+
+plot 'colvar.out' u ($1/1000):4 w l t ''

@@ -1,0 +1,5 @@
+#!/bin/bash
+rm fes*dat
+../../plumed/bin/plumed pesmd < input > output 
+../../plumed/bin/plumed sum_hills --hills HILLS --stride 10 >> /dev/null
+
