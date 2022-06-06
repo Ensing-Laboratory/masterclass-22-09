@@ -1,0 +1,43 @@
+UNITS LENGTH=nm TIME=fs
+
+cv: DISTANCE ATOMS=1,2 COMPONENTS
+
+lwall: LOWER_WALLS ARG=cv.x,cv.y AT=-1.5,-0.5 KAPPA=1000.0,1000.0
+uwall: UPPER_WALLS ARG=cv.x,cv.y AT=1.5,2.5 KAPPA=1000.0,1000.0
+
+PATHCV ...
+   LABEL=pcv
+   ARG=cv.x,cv.y 
+   GENPATH=20,20,20,0.6,0.0,-0.5,1.5 
+   FIXED=21,40 
+   PACE=1000
+   STRIDE=1000 
+   HALFLIFE=5000
+   OUTFILE=path.out
+   WALKERS_ID=1
+   WALKERS_N=2
+   WALKERS_DIR=../
+   WALKERS_RSTRIDE=1000
+... PATHCV
+
+METAD ...
+   LABEL=metad
+   ARG=pcv.s 
+   SIGMA=0.1 
+   HEIGHT=0.5 
+   PACE=500 
+   FILE=HILLS
+   WALKERS_ID=1
+   WALKERS_N=2
+   WALKERS_DIR=../
+   WALKERS_RSTRIDE=500
+... METAD
+
+tube: RESTRAINT ARG=pcv.z AT=0.0 KAPPA=500.0
+
+slwall: LOWER_WALLS ARG=pcv.s AT=-0.5 KAPPA=1000.0
+suwall: UPPER_WALLS ARG=pcv.s AT=1.5 KAPPA=1000.0
+
+# PRINT ARG=cv.x,cv.y,pcv.s,pcv.z,metad.bias,tube.bias,lwall.bias,uwall.bias STRIDE=100 FILE=colvar.out
+PRINT ARG=cv.x,cv.y,pcv.s,pcv.z,metad.bias STRIDE=100 FILE=colvar.out
+

@@ -1,0 +1,9 @@
+#!/bin/bash
+rm fes*dat
+cd run1
+../../../plumed/bin/plumed pesmd < input >> output  &
+cd ../run2
+../../../plumed/bin/plumed pesmd < input >> output
+cd ..
+# ../../plumed/bin/plumed sum_hills --hills HILLS --stride 10 >> /dev/null
+
